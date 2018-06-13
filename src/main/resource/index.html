@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="clickTest()">TEST</button>
+
+    <script>
+        function clickTest() {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', 'http://localhost:8080/a', false);
+            xhr.send();
+
+            alert(xhr.responseText);
+
+        }
+    </script>
+</body>
+</html>
