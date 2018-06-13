@@ -1,4 +1,4 @@
-package com.bittboss.ws;
+package com.test.ws;
 
 import java.io.*;
 import java.net.ServerSocket;

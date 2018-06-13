@@ -1,4 +1,4 @@
-package com.bittboss.ws;
+package com.test.ws;
 
 public class Main {
 
