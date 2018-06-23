@@ -8,14 +8,22 @@
     <button onclick="clickTest()">TEST</button>
 
     <script>
+        var socket = new WebSocket("ws://localhost:8080/ws");
+
+        socket.onopen = function() {
+            alert("Соединение установлено.");
+        };
+
+        socket.onmessage = function(event) {
+            alert("Получены данные " + event.data);
+        };
+
+        socket.onerror = function(error) {
+            alert("Ошибка " + error.message);
+        };
+
         function clickTest() {
-            var xhr = new XMLHttpRequest();
-
-            xhr.open('GET', 'http://localhost:8080/a', false);
-            xhr.send();
-
-            alert(xhr.responseText);
-
+            socket.send("Привет");
         }
     </script>
 </body>
