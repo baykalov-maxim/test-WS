@@ -8,7 +8,29 @@
     <button onclick="clickTest()">TEST</button>
 
     <script>
+        XMLHttpRequest.prototype.oldOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(m, u, a) {
+            if (this.proxy !== undefined) {
+                var domain = '' + u.match(/\/\/[a-z0-9A-Z\.\-]*\//);
+                var url = u.replace(domain, '//' + this.proxy + '/');
+                this.oldOpen(m, url, a);
+                this.setRequestHeader("X-Host", domain.replace(/\//g, ''));
+            } else {
+                this.oldOpen(m, u, a);
+            }
+        };
 
+        function clickTest() {
+            var xhr = new XMLHttpRequest();
+            xhr.proxy = "localhost:8080";
+            xhr.open('POST', 'http://SOME.URL.TYPE/_api', true);
+            xhr.send();
+
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+            }
+
+        }
     </script>
 </body>
 </html>

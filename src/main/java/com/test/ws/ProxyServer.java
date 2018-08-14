@@ -8,6 +8,6 @@ public class ProxyServer extends Server {
 
     @Override
     protected String handleRequest(String request) {
-        return "HTTP/1.1 200 OK\r\n\r\nHi!";
+        return "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\n\r\nHi!";
     }
 }
