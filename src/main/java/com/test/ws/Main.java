@@ -4,17 +4,18 @@ import okhttp3.*;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.Proxy;
 
 public class Main {
 
-    static java.net.Proxy proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("localhost", 8080));
+    static Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost", 8080));
 
     static OkHttpClient client = new OkHttpClient.Builder()
             .proxy(proxy)
             .build();
 
     public static void main(String[] args) {
-        new Thread(() -> new Proxy(8080).start()).start();
+        new Thread(() -> new ProxyServer(8080).start()).start();
 
 
         try {

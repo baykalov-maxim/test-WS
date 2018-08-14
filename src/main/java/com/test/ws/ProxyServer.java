@@ -1,8 +1,8 @@
 package com.test.ws;
 
-public class Proxy extends Server {
+public class ProxyServer extends Server {
 
-    public Proxy(int port) {
+    public ProxyServer(int port) {
         super(port);
     }
 
