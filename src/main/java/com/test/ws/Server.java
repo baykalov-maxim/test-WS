@@ -63,7 +63,7 @@ public abstract class Server {
                 break;
         }
 
-        System.out.println("Get message " + request);
+        System.out.println("Server has got message:\n" + request);
         return request.toString();
     }
 
